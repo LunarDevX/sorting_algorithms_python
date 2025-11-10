@@ -81,7 +81,7 @@ SortFn = Callable[[list[int]], list[int]]
 
 
 def context(strategy: SortFn, data: list[int]) -> list[int]:
-    return strategy(data)  # pass_count = 0
+    return strategy(data)
 
 
 def main() -> None:

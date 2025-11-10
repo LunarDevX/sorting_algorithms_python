@@ -77,6 +77,35 @@ def selection_sort(data: list[int]) -> list[int]:
     return data
 
 
+def quick_sort(data: list[int]) -> list[int]:
+    """
+    Selects a pivot element and partitions the array into elements
+    less than, equal to, and greater than the pivot, then recursively sorts each partition.
+    """
+
+    data = data.copy()
+    list_length = len(data)
+
+    if list_length <= 1:
+        return data
+
+    pivot = data[-1]
+
+    less = []
+    equal = []
+    greater = []
+
+    for element in data:
+        if element < pivot:
+            less.append(element)
+        elif element == pivot:
+            equal.append(element)
+        else:
+            greater.append(element)
+
+    return quick_sort(less) + equal + quick_sort(greater)
+
+
 SortFn = Callable[[list[int]], list[int]]
 
 
@@ -88,6 +117,7 @@ def main() -> None:
     print(context(bubble_sort, [8, 4, 1, 3, 9]))
     print(context(insertion_sort, [8, 4, 1, 3, 9]))
     print(context(selection_sort, [8, 4, 1, 3, 9]))
+    print(context(quick_sort, [8, 4, 1, 3, 9]))
 
 
 if __name__ == "__main__":
